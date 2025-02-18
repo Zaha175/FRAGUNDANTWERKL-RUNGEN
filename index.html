@@ -46,20 +46,22 @@
             background-color: #d9a600;
             color: white;
         }
-        .answers {
-            padding: 10px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, -10%);
-            z-index: 1000;
-            width: 60%;
-            max-height: 70vh;
-            overflow-y: auto;
-            display: none;
-        }
+      .answers {
+    padding: 20px; /* Mehr Innenabstand für besseren Inhalt */
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    position: fixed;
+    top: 5%; /* Weiter oben positioniert */
+    left: 50%;
+    transform: translate(-50%, -5%); /* Anpassung an die neue Höhe */
+    z-index: 1000;
+    width: 80%; /* Breiteres Modul */
+    max-height: 85vh; /* Höheres Modul */
+    overflow-y: auto;
+    display: none;
+    border-radius: 10px; /* Optional: Abgerundete Ecken für ein moderneres Aussehen */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Optional: Schatten für bessere Sichtbarkeit */
+}
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -94,6 +96,39 @@
         .mode-toggle.moon {
             color: #C0C0C0; /* Silver for moon */
         }
+.knob {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #00ffcc;   /* Farbe der Umrandung */
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  /* Zentrierung für alles, was sich darin befindet (z.B. die innere Kugel) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Rotation-Animation */
+  animation: rotateKnob 5s linear infinite;
+}
+
+/* Keyframes für die Rotation des gesamten Knopfs */
+@keyframes rotateKnob {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Kleiner Zeiger im Knopf (visueller Effekt) */
+.knob:after {
+  content: '';
+  width: 6px;
+  height: 40%;
+  background: #00ffcc;
+  position: absolute;
+}
+
     </style>
 </head>
 <body class="dark-mode">
@@ -111,6 +146,9 @@
             <button class="btn btn-danger mb-2" onclick="closeAnswer()">SCHLIEßEN</button>
             <div id="answerContent"></div>
         </div>
+       <div class="right-side">
+        <div class="knob"></div>
+      </div>
     </main>
     <script>
         const qa_data = [
